@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Esta linha é mágica: ela faz o site entender o tamanho da tela do celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Lista de Compras</title>
+    <link rel="stylesheet" href="{% static 'lista_compras/style.css' %}">
+</head>
+<body>
+    <div class="header-user">
+    Olá, <strong>{{ user.username }}</strong>!
+    
+    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn-sair">Sair</button>
+    </form>
+</div>
+    <div class="container">
+        <h1>Lista de Compras</h1>
+        <ul>
+            {% for item in itens %}
+                <li class="item-lista {% if item.comprado %}comprado{% endif %}">
+                <input 
+                    type="checkbox" 
+                    {% if item.comprado %}checked{% endif %}
+                    data-link="{% url 'alternar_status' item.pk %}"
+                    onclick="window.location.href=this.dataset.link"
+                >
+
+                {% if item.comprado %}
+                    <strike>{{ item.quantidade }}x {{ item.nome }}</strike>
+                {% else %}
+                    {{ item.quantidade }}x {{ item.nome }}
+                {% endif %}
+
+                <span class="actions">
+                    [<a href="{% url 'editar' item.pk %}">Editar</a>]
+                    [<a href="{% url 'deletar' item.pk %}">Deletar</a>]
+                </span>
+            </li>
+        {% empty %}
+            <p>Nenhum item na lista ainda.</p>
+        {% endfor %}
+    </ul>
+    <div>
+        <h3>Adicionar Novo Item</h3>
+        <form method="POST">
+            {% csrf_token %} 
+            {{ form.as_p }} 
+            <button type="submit">Adicionar Item</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>

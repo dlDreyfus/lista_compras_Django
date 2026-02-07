@@ -1,0 +1,12 @@
+# Python e Django
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Banco de dados local (geralmente não se envia para o git)
+db.sqlite3
+
+# Ambientes virtuais (se houver)
+.venv
+env/
+venv/

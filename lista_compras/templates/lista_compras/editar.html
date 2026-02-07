@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Item</title>
+    <link rel="stylesheet" href="{% static 'lista_compras/style.css' %}">
+</head>
+<body>
+    <div class="container">
+    <h2>Editar Item</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+    <br>
+    <div style="text-align: center;">
+        <a href="{% url 'lista' %}">Cancelar e Voltar</a>
+    </div>
+    </div>
+</body>
+</html>

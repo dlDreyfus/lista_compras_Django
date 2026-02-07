@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lista_compras/style.css' %}">
+</head>
+<body>
+    
+    <div class="auth-box">
+        <h2>Faça Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Entrar</button>
+        </form>
+        <p style="text-align: center; margin-top: 15px;">
+            Ainda não tem conta? <a href="{% url 'cadastro' %}">Cadastre-se</a>
+        </p>
+    </div>
+</body>
+</html>
