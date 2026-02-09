@@ -58,12 +58,12 @@ input[type="password"],
 input[type="number"],
 input[type="email"] {
     width: 100%;
-    padding: 8px 12px;
+    padding: 12px;
     margin: 8px 0 20px 0;
     border: 1px solid #d2d2d7;
     border-radius: 6px;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 16px;
     background-color: #fff;
     transition: all 0.2s ease;
 }
@@ -193,8 +193,8 @@ ul {
         width: auto;
     }
     .auth-box {
-        margin: 40px 20px; /* Margem menor nas laterais */
+        margin: 20px 10px; /* Margem menor nas laterais */
         width: auto;
-        padding: 30px 20px;
+        padding: 20px 15px;
     }
 }
